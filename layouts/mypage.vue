@@ -1,11 +1,16 @@
 <template>
-  <div v-if="user" class="container">
-    <Nuxt />
+  <div>
+    <AppHeader :user="user" />
+    <div v-if="user" class="container pt-5">
+      <Nuxt />
+    </div>
   </div>
 </template>
 <script>
 import { authUserMapper } from "~/store/user"
+import AppHeader from "~/components/layouts/AppHeader"
 export default {
+  components: {AppHeader},
   computed: {
     ...authUserMapper.mapState(["user"]),
   },
