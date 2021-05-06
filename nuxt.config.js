@@ -33,6 +33,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios', '@nuxtjs/firebase'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
