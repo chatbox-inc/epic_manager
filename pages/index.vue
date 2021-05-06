@@ -7,11 +7,19 @@
 </template>
 
 <script>
+import { authUserMapper } from "~/store/user"
 export default {
   layout: "guest",
   methods: {
-    login() {
-      console.log("hoge")
+    ...authUserMapper.mapActions(["onLogin"]),
+    async login() {
+      console.log("handle")
+      const provider = new this.$fireModule.auth.GithubAuthProvider()
+      const result = await this.$fireModule.auth().signInWithPopup(provider)
+      if(result) {
+        this.onLogin(result)
+        this.$router.push("/app")
+      }
     }
   }
 }
