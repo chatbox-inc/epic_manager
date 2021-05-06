@@ -27,14 +27,8 @@ export const actions = {
   onAuthStateChangedAction(ctx, { authUser }) {
     console.log("auth", authUser)
   },
-  onLogin({ commit }, { additionalUserInfo, user, credential }) {
-    const userInfo = {
-      uid: user.uid,
-      name: additionalUserInfo.profile.name,
-      email: additionalUserInfo.profile.email,
-      login: additionalUserInfo.profile.login
-    }
-    commit("SET_USER", { user: userInfo, token: credential.accessToken })
+  onLogin({ commit }, { user, credential }) {
+    commit("SET_USER", { user: user.uid, token: credential.accessToken })
   },
   async onLogout({ commit }) {
     await this.$fireModule.auth().signOut()

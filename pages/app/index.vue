@@ -1,18 +1,13 @@
 <template>
-  <AppSection :title="`リポジトリ選択`">
-    <select class="custom-select">
-      <option :value="null" selected>選択してください</option>
-      <option
-        v-for="option in options"
-        :key="option.val"
-        :value="option.val"
-      >
-        {{ option.label }}
-      </option>
-    </select>
-    <a href="#" @click.prevent="linkToProjects" class="btn btn-primary py-2 px-4 rounded">
-      プロジェクト管理ページへ
-    </a>
+  <AppSection :title="`リポジトリの入力`">
+    <div class="input-group mb-4">
+      <input v-model="form.repos" type="text" placeholder="リポジトリを入力してください" class="form-control">
+    </div>
+    <div class="text-right">
+      <a href="#" @click.prevent="linkToProjects" class="btn btn-primary py-2 px-4 rounded">
+        プロジェクト管理ページへ
+      </a>
+    </div>
   </AppSection>
 </template>
 
@@ -23,19 +18,18 @@ export default {
   layout: "mypage",
   data() {
     return {
-      selected: "tamemoto/epic_manager",
-      options: [
-        { label: "tamemoto/epic_manager", val: "tamemoto/epic_manager" }
-      ]
+      form: {
+        repos: "tamemoto/epic_manager"
+      },
     }
   },
   methods: {
     linkToProjects() {
-      if(!this.selected) {
+      if(!this.form.repos) {
         alert("リポジトリを選択してください")
         return
       }
-      const [owner, repo] = this.selected.split("/")
+      const [owner, repo] = this.form.repos.split("/")
       this.$router.push(`/app/repos/${owner}/${repo}`)
     }
   }
