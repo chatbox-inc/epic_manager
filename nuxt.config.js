@@ -38,12 +38,13 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyB2HVBOEZFirO7jesw5DaqziZq37VeGCuk',
-      authDomain: 'epic-manager.firebaseapp.com',
-      projectId: 'epic-manager',
-      storageBucket: 'epic-manager.appspot.com',
-      messagingSenderId: '713364766385',
-      appId: '1:713364766385:web:e4f1eb93dee948ae702c90',
+      apiKey: 'AIzaSyA72hQlO0lDxI-_LK16VOmVJEzntsKkBYE',
+      authDomain: 'epic-manager-3d4e9.firebaseapp.com',
+      projectId: 'epic-manager-3d4e9',
+      storageBucket: 'epic-manager-3d4e9.appspot.com',
+      messagingSenderId: '454500269237',
+      appId: '1:454500269237:web:b5628c759d4305a49e52fc',
+      measurementId: 'G-B4YW2SGHTG',
     },
     services: {
       auth: {
