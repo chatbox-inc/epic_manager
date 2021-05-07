@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       form: {
-        repos: "tamemoto/epic_manager"
+        repos: ""
       },
     }
   },
