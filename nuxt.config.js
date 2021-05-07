@@ -33,8 +33,11 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios', '@nuxtjs/firebase'
+    '@nuxtjs/axios', '@nuxtjs/firebase', '@nuxtjs/markdownit'
   ],
+  markdownit: {
+    runtime: true // Support `$md()`
+  },
 
   firebase: {
     config: {
