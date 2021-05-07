@@ -1,5 +1,10 @@
 # epic_manager
 
+## Enviroment
+```
+node: 12系
+```
+
 ## Build Setup
 
 ```bash
