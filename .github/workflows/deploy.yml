@@ -18,5 +18,8 @@ jobs:
       - name: Build
         run: npm run build
       - name: deploy to Firebase Hosting
-        run: |
-          firebase deploy --token=${{ secrets.FB_TOKEN }}
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FB_TOKEN }}
