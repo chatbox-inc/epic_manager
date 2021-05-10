@@ -1,7 +1,5 @@
 name: deploy
-
 on: [push]
-
 jobs:
   deploy:
     name: deploy
@@ -15,12 +13,13 @@ jobs:
           node-version: 12.x
       - name: Install Dependencies
         run: npm install
-      - name: Generate
+      - name: generate
         run: npm run generate
       - name: deploy to Firebase Hosting
+        run: |
+          firebase deploy --token=${{ secrets.FB_TOKEN }}
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting
+          args: deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FB_TOKEN }}
-          PROJECT_ID: epic-manager-3d4e9
