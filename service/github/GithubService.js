@@ -8,11 +8,12 @@ export class GithubService {
     })
   }
 
-  async createIssue({ owner, repo, title }) {
+  async createIssue({ owner, repo, title, body }) {
     const result = await this._oktokit.rest.issues.create({
       owner,
       repo,
-      title
+      title,
+      body
     })
     return result
   }
