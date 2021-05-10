@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 12.x
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run generate
       - name: deploy to Firebase Hosting
