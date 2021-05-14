@@ -41,13 +41,13 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyA72hQlO0lDxI-_LK16VOmVJEzntsKkBYE',
-      authDomain: 'epic-manager-3d4e9.firebaseapp.com',
-      projectId: 'epic-manager-3d4e9',
-      storageBucket: 'epic-manager-3d4e9.appspot.com',
-      messagingSenderId: '454500269237',
-      appId: '1:454500269237:web:b5628c759d4305a49e52fc',
-      measurementId: 'G-B4YW2SGHTG',
+      apiKey: process.env.FB_API_KEY,
+      authDomain: process.env.FB_AUTH_DOMAIN,
+      projectId: process.env.FB_PROJECT_ID,
+      storageBucket: process.env.FB_STORAGE_BUCKET,
+      messagingSenderId: process.env.FB_MESSAGING_SENDER_ID,
+      appId: process.env.FB_APP_ID,
+      measurementId: process.env.FB_MEASUREMENT_ID,
     },
     services: {
       auth: {
