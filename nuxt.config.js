@@ -1,5 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  publicRuntimeConfig: {
+    APP_CLIENT_ID: process.env.APP_CLIENT_ID,
+    APP_CLIENT_SECRET: process.env.APP_CLIENT_SECRET
+  },
   head: {
     title: 'epic_manager',
     htmlAttrs: {
