@@ -1,14 +1,13 @@
 <template>
   <div>
     <div>
-      <label for="private">
-        <input v-model="withPrivate" class="border border-4 mr-2" type="checkbox" id="private" />
-        Private リポジトリを含む
-      </label>
+      <a href="https://github.com/apps/example-app-dev/installations/new" class="mr-2">
+        リポジトリ連携
+      </a>
     </div>
-    <a href="#" @click.prevent="login">
-      <span class="btn btn-primary py-2 px-4 rounded">ログイン</span>
-    </a>
+    <button class="btn btn-primary py-2 px-4 rounded" @click.prevent="login" :disabled="hasInstalledId">
+      ログイン
+    </button>
   </div>
 </template>
 
@@ -18,23 +17,22 @@ export default {
   layout: "guest",
   data() {
     return {
-      withPrivate: false,
+      hasInstalledId: true,
     }
+  },
+  mounted() {
+    this.hasInstalledId = !this.$route.query.code
   },
   methods: {
     ...authUserMapper.mapActions(["onLogin"]),
     async login() {
-      const provider = new this.$fireModule.auth.GithubAuthProvider()
-      if(this.withPrivate) {
-        provider.addScope("repo")
-      }
-      try {
-        const result = await this.$fireModule.auth().signInWithPopup(provider)
-        this.onLogin(result)
-        this.$router.push("/app")
-      }catch (e) {
-        console.log(e)
-      }
+      const { code } = this.$route.query
+      const result = await this.$axios.post("https://github.com/login/oauth/access_token",{
+        code: code,
+        client_id: this.$config.APP_CLIENT_ID,
+        client_secret: this.$config.APP_CLIENT_SECRET,
+      })
+      console.log(result)
     }
   }
 }
